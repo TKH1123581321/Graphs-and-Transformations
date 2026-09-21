@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#f6f8fb"/>
+<title>GraphLab — H2 Mathematics</title>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div class="app-shell">
+<header class="topbar">
+  <a class="brand" href="#home" data-route="home"><span class="brand-mark">G</span><span><strong>GraphLab</strong><small>H2 Mathematics · 1.2</small></span></a>
+  <div class="top-actions">
+    <div class="mode-switch"><button class="mode-btn active" data-mode="learn">Learn</button><button class="mode-btn" data-mode="practice">Practice</button></div>
+    <button class="icon-btn" id="resetProgressBtn" title="Reset local progress">↻</button>
+  </div>
+</header>
+<aside class="sidebar">
+  <nav>
+    <button class="nav-item active" data-route="home"><span>⌂</span><b>Overview</b></button>
+    <button class="nav-item" data-route="anatomy"><span>◎</span><b>Graph Anatomy</b></button>
+    <button class="nav-item" data-route="transform"><span>↗</span><b>Transform Lab</b></button>
+    <button class="nav-item" data-route="special"><span>|f|</span><b>Special Transforms</b></button>
+    <button class="nav-item" data-route="families"><span>◒</span><b>Graph Families</b></button>
+    <button class="nav-item" data-route="challenge"><span>◆</span><b>Challenge Lab</b></button>
+  </nav>
+  <div class="sidebar-foot"><p>Session progress</p><div class="progress-track"><span id="progressBar"></span></div><strong id="progressText">0 of 5 spaces explored</strong></div>
+</aside>
+
+<main class="content">
+<section class="screen active" id="screen-home">
+  <div class="hero">
+    <div>
+      <span class="eyebrow">H2 MATHEMATICS · GRAPHS & TRANSFORMATIONS</span>
+      <h1>See it. Predict it.<br><em>Explain it.</em></h1>
+      <p>Use visual experiments to build graph sense — then remove the scaffolds and commit to your own prediction.</p>
+      <div class="hero-actions"><button class="primary-btn" data-route="transform">Start Transform Lab <span>→</span></button><button class="secondary-btn" data-route="challenge">Try a Challenge</button></div>
+    </div>
+    <div class="hero-visual card">
+      <div class="mini-label"><span class="dot original"></span> y = f(x) <span class="dot transformed"></span> transformed</div>
+      <svg id="heroGraph" class="graph-svg" viewBox="0 0 720 420"></svg>
+      <div class="formula-pill">y = 1.4 f(0.8(x − 1)) + 1</div>
+    </div>
+  </div>
+  <div class="section-heading"><div><span class="eyebrow">LEARNING SPACES</span><h2>One topic, five visual laboratories.</h2></div><p>Each space moves from noticing → predicting → explaining → applying.</p></div>
+  <div class="module-grid">
+    <article class="module-card" data-route="anatomy"><div class="module-icon">◎</div><span class="module-no">01</span><h3>Graph Anatomy</h3><p>Intersections, symmetry, turning points, asymptotes and restrictions.</p><button>Explore <span>→</span></button></article>
+    <article class="module-card featured" data-route="transform"><div class="module-icon">↗</div><span class="module-no">02</span><h3>Transform Lab</h3><p>Build intuition for vertical and horizontal scaling, translation and reflection.</p><button>Explore <span>→</span></button></article>
+    <article class="module-card" data-route="special"><div class="module-icon">|f|</div><span class="module-no">03</span><h3>Special Transforms</h3><p>Watch how |f(x)| and 1/f(x) inherit information from f(x).</p><button>Explore <span>→</span></button></article>
+    <article class="module-card" data-route="families"><div class="module-icon">◒</div><span class="module-no">04</span><h3>Graph Families</h3><p>Conics, rational functions and simple parametric graphs.</p><button>Explore <span>→</span></button></article>
+    <article class="module-card dark-card" data-route="challenge"><div class="module-icon">◆</div><span class="module-no">05</span><h3>Challenge Lab</h3><p>No sliders first. Make a prediction, commit, then inspect the feedback.</p><button>Challenge me <span>→</span></button></article>
+  </div>
+  <div class="workflow-strip"><div><b>1</b><span>Think on paper</span></div><i>→</i><div><b>2</b><span>Commit</span></div><i>→</i><div><b>3</b><span>Explore visually</span></div><i>→</i><div><b>4</b><span>Explain why</span></div><i>→</i><div><b>5</b><span>Apply independently</span></div></div>
+</section>
+
+<section class="screen" id="screen-anatomy">
+  <div class="page-head"><div><span class="eyebrow">01 · GRAPH ANATOMY</span><h1>Read a graph before you calculate.</h1><p>Choose a graph family, then reveal only the features you want to inspect.</p></div><span class="lesson-tag">Conceptualise</span></div>
+  <div class="lab-layout">
+    <div class="card graph-card">
+      <div class="card-top"><div><small>SELECTED GRAPH</small><h3 id="anatomyTitle">Linear rational function</h3></div><div class="segmented" id="anatomyFamily"><button class="active" data-family="rational">Rational</button><button data-family="ellipse">Ellipse</button><button data-family="hyperbola">Hyperbola</button><button data-family="parabola">Parabola</button></div></div>
+      <svg id="anatomyGraph" class="graph-svg large" viewBox="0 0 720 460"></svg>
+      <div class="feature-chips"><button class="feature-chip" data-feature="axes">Intersections</button><button class="feature-chip" data-feature="symmetry">Symmetry</button><button class="feature-chip" data-feature="asymptotes">Asymptotes</button><button class="feature-chip" data-feature="restrictions">Restrictions</button></div>
+    </div>
+    <aside class="card insight-card"><span class="eyebrow">NOTICE</span><h3 id="anatomyPrompt">What happens near x = 2?</h3><p id="anatomyInsight">Before revealing anything, trace the curve with your eyes. Where does the graph appear unable to cross?</p><div class="notice-box"><b>Worksheet move</b><p>Mark one feature you think matters before tapping a reveal button.</p></div><div id="anatomyFacts" class="fact-list"></div></aside>
+  </div>
+</section>
+
+<section class="screen" id="screen-transform">
+  <div class="page-head"><div><span class="eyebrow">02 · TRANSFORM LAB</span><h1>Move the equation. Watch the graph respond.</h1><p>The original graph stays as a ghost so every change can be compared directly.</p></div><span class="lesson-tag">Conceptualise → Apply</span></div>
+  <div class="card transform-workbench">
+    <div class="equation-bar"><span>TRANSFORMED FUNCTION</span><strong id="transformEquation">y = f(x)</strong><button id="resetTransform" class="text-btn">Reset</button></div>
+    <div class="workbench-grid">
+      <div class="graph-pane">
+        <div class="graph-legend"><span><i class="dot original"></i> f(x)</span><span><i class="dot transformed"></i> transformed</span></div>
+        <svg id="transformGraph" class="graph-svg large" viewBox="0 0 720 460"></svg>
+        <div class="freeze-row"><button id="freezeBtn" class="secondary-btn small">Freeze current graph</button><button id="clearGhostsBtn" class="text-btn">Clear ghosts</button><span id="ghostCount">0 frozen</span></div>
+      </div>
+      <div class="controls-pane">
+        <div class="control-block"><div class="control-label"><span><b>a</b> · vertical scale</span><strong id="aVal">1</strong></div><input id="aSlider" type="range" min="-2.5" max="2.5" value="1" step="0.25"/><small id="aExplain">No vertical scaling.</small></div>
+        <div class="control-block"><div class="control-label"><span><b>b</b> · horizontal scale</span><strong id="bVal">1</strong></div><input id="bSlider" type="range" min="-2.5" max="2.5" value="1" step="0.25"/><small id="bExplain">No horizontal scaling.</small></div>
+        <div class="control-block"><div class="control-label"><span><b>h</b> · horizontal shift</span><strong id="hVal">0</strong></div><input id="hSlider" type="range" min="-3" max="3" value="0" step="0.5"/><small id="hExplain">No horizontal translation.</small></div>
+        <div class="control-block"><div class="control-label"><span><b>k</b> · vertical shift</span><strong id="kVal">0</strong></div><input id="kSlider" type="range" min="-3" max="3" value="0" step="0.5"/><small id="kExplain">No vertical translation.</small></div>
+        <div class="rule-card"><span>GENERAL FORM</span><strong>y = a f(b(x − h)) + k</strong><p>Horizontal scaling is controlled by <b>1/|b|</b>, not |b|. That is the common trap.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="concept-cards"><button class="concept-card" data-preset="vertical"><b>a f(x)</b><span>Vertical scale / x-axis reflection</span></button><button class="concept-card" data-preset="up"><b>f(x) + k</b><span>Vertical translation</span></button><button class="concept-card" data-preset="horizontal"><b>f(bx)</b><span>Horizontal scale / y-axis reflection</span></button><button class="concept-card" data-preset="right"><b>f(x − h)</b><span>Horizontal translation</span></button></div>
+</section>
+
+<section class="screen" id="screen-special">
+  <div class="page-head"><div><span class="eyebrow">03 · SPECIAL TRANSFORMS</span><h1>Let f(x) tell you what the new graph must do.</h1><p>Track one x-value at a time and watch information transfer from f(x) to the transformed graph.</p></div><span class="lesson-tag">Conceptualise</span></div>
+  <div class="card special-card">
+    <div class="card-top"><div class="segmented" id="specialTabs"><button class="active" data-special="abs">y = |f(x)|</button><button data-special="reciprocal">y = 1/f(x)</button></div><div class="graph-legend"><span><i class="dot original"></i> f(x)</span><span><i class="dot transformed"></i> transformed</span></div></div>
+    <div class="special-grid"><div><svg id="specialGraph" class="graph-svg large" viewBox="0 0 720 460"></svg><div class="cursor-control"><label for="xProbe">Probe x = <strong id="xProbeVal">0.0</strong></label><input id="xProbe" type="range" min="-5.5" max="5.5" value="0" step="0.1"/></div></div><aside class="special-explain"><span class="eyebrow">FOLLOW ONE POINT</span><div class="value-stack"><div><span>f(x)</span><strong id="fxValue">0</strong></div><div class="arrow-down">↓</div><div><span id="specialValueLabel">|f(x)|</span><strong id="specialValue">0</strong></div></div><h3 id="specialHeadline">Only the negative y-values move.</h3><p id="specialCopy"></p><div class="notice-box"><b>Think before sliding</b><p id="specialQuestion"></p></div></aside></div>
+  </div>
+</section>
+
+<section class="screen" id="screen-families">
+  <div class="page-head"><div><span class="eyebrow">04 · GRAPH FAMILIES</span><h1>A gallery you can touch.</h1><p>Change the defining parameters and notice what is structural and what is incidental.</p></div><span class="lesson-tag">Learn → Explore</span></div>
+  <div class="family-tabs" id="familyTabs"><button class="active" data-studio="ellipse">Ellipse</button><button data-studio="hyperbola">Hyperbola</button><button data-studio="rational">Rational</button><button data-studio="parametric">Parametric</button></div>
+  <div class="family-studio card"><div class="family-info"><span class="eyebrow" id="familyEyebrow">ELLIPSE</span><h2 id="familyEquation">x²/a² + y²/b² = 1</h2><p id="familyDescription"></p><div id="familyControls"></div><div class="notice-box"><b>Look for invariants</b><p id="familyPrompt"></p></div></div><div class="family-graph-wrap"><svg id="familyGraph" class="graph-svg large" viewBox="0 0 720 500"></svg><div id="parametricTimeline" class="timeline hidden"><button id="paramPlay">▶</button><input id="tSlider" type="range" min="0" max="6.283" step="0.01" value="0"/><span>t = <b id="tVal">0.00</b></span></div></div></div>
+</section>
+
+<section class="screen" id="screen-challenge">
+  <div class="page-head"><div><span class="eyebrow">05 · CHALLENGE LAB</span><h1>Predict first. Then earn the animation.</h1><p>Choose the graph you think is correct. Nothing is revealed until you commit.</p></div><div class="score-pill"><span>Session</span><strong id="challengeScore">0 / 0</strong></div></div>
+  <div class="challenge-shell">
+    <div class="card challenge-question"><div class="challenge-meta"><span id="challengeType">HORIZONTAL TRANSLATION</span><button id="newChallengeBtn" class="text-btn">New question ↻</button></div><p>The grey curve is <b>y = f(x)</b>. Which option represents</p><h2 id="challengeEquation">y = f(x + 2)</h2><div class="commit-reminder"><span>✎</span><p><b>Before you tap:</b> sketch your prediction on paper and commit to the direction/scale.</p></div></div>
+    <div class="option-grid" id="challengeOptions"></div>
+    <div class="challenge-actions"><button id="commitChallenge" class="primary-btn" disabled>Commit answer</button><span id="selectionStatus">Select one graph.</span></div>
+    <div id="challengeFeedback" class="feedback-panel hidden"></div>
+  </div>
+</section>
+</main>
+
+<nav class="mobile-nav"><button class="active" data-route="home"><span>⌂</span><small>Home</small></button><button data-route="transform"><span>↗</span><small>Transform</small></button><button data-route="special"><span>|f|</span><small>Special</small></button><button data-route="families"><span>◒</span><small>Families</small></button><button data-route="challenge"><span>◆</span><small>Challenge</small></button></nav>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
